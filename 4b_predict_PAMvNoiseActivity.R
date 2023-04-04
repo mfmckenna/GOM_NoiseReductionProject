@@ -6,6 +6,8 @@
 
 rm(list = ls())
 library(mgcv)
+library(ggplot2)
+library(lubridate)
 wrkDir = "G:\\My Drive\\ActiveProjects\\COA\\NFWF_GOM_workingDrive\\"
 
 # INPUT DATA: PAM SPL values (response variable)
@@ -37,7 +39,13 @@ ggplot(medSPLm, aes(x = Fq, y=SPL, group = date ) ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-# plot the median in specidic FQ for all days at each date- for each site 
+# Select specific data to compare...
+dts = ( as.data.frame( unique( medSPLm$date ) ) )
+medSPLm$mth = month( medSPLm$date )
+medSPLm[ medSPLm$date  == as.Date("2020-09-04"), ] #seismic activity
+medSPLm[ medSPLm$date  == as.Date("2020-11-09"), ] #no seismic activity
+
+ # plot the median in specidic FQ for all days at each date- for each site 
 PAM.Dir   = paste0(wrkDir, "data\\PAM")
 PAMFilesMedian  = list.files(path = PAM.Dir, pattern= "MFpctile" , recursive=TRUE, full.names = TRUE)
 pctSPL = as.data.frame( read.csv(PAMFilesMedian ) )
