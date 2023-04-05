@@ -42,8 +42,25 @@ ggplot(medSPLm, aes(x = Fq, y=SPL, group = date ) ) +
 # Select specific data to compare...
 dts = ( as.data.frame( unique( medSPLm$date ) ) )
 medSPLm$mth = month( medSPLm$date )
-medSPLm[ medSPLm$date  == as.Date("2020-09-04"), ] #seismic activity
-medSPLm[ medSPLm$date  == as.Date("2020-11-09"), ] #no seismic activity
+yesS = medSPLm[ medSPLm$date  == as.Date("2020-09-04"), ] #seismic activity
+noS = medSPLm[ medSPLm$date  == as.Date("2020-11-09"), ] #no seismic activity
+
+unique(noS$site)
+unique(yeS$site)
+
+ggplot(medSPLm, aes(x = Fq, y=SPL, group = date ) ) +
+  geom_line(alpha = .2 ) + 
+  geom_line(data = noS, aes(x = Fq, y=SPL), color = "blue")  +
+  geom_line(data = yesS, aes(x = Fq, y=SPL), color = "red")  +
+  scale_x_log10() +
+  geom_vline(xintercept=120, linetype="dashed", color = "gray")+
+  geom_vline(xintercept=1000, linetype="dashed", color = "gray")+
+  facet_wrap(~as.factor(site) ) +  
+  ylab("daily median SPL (10 Hz bands)")+ xlab("Frequency (Hz)")+
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
 
  # plot the median in specidic FQ for all days at each date- for each site 
 PAM.Dir   = paste0(wrkDir, "data\\PAM")
