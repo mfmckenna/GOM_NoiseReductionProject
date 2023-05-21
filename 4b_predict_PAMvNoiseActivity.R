@@ -42,11 +42,11 @@ ggplot(medSPLm, aes(x = Fq, y=SPL, group = date ) ) +
 # Select specific data to compare...
 dts = ( as.data.frame( unique( medSPLm$date ) ) )
 medSPLm$mth = month( medSPLm$date )
-yesS = medSPLm[ medSPLm$date  == as.Date("2020-09-04"), ] #seismic activity
+yesS = medSPLm[ medSPLm$date  == as.Date("2020-12-09"), ] #seismic activity
 noS = medSPLm[ medSPLm$date  == as.Date("2020-11-09"), ] #no seismic activity
 
 unique(noS$site)
-unique(yeS$site)
+unique(yesS$site)
 
 ggplot(medSPLm, aes(x = Fq, y=SPL, group = date ) ) +
   geom_line(alpha = .2 ) + 
