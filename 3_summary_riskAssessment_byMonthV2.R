@@ -27,9 +27,9 @@ mthName$PAM  = c(7,8,9,10,11,12,1,2,3,4,5,6) # for AIS data
 mthName = as.data.frame(mthName) # unique file naming by month
 
 # directories #### 
-wrkDir = "G:\\My Drive\\ActiveProjects\\COA\\NFWF_GOM_workingDrive\\" 
-AIS.dir =   paste0("H:\\AIS_MarineCad\\data\\GoMexRegion\\GoMexRegion_trim")
-PAM.Dir   = paste0(wrkDir, "data\\PAM")
+wrkDir   = "G:\\My Drive\\ActiveProjects\\COA\\NFWF_GOM_workingDrive\\" 
+AIS.dir  =  paste0("H:\\AIS_MarineCad\\data\\GoMexRegion\\GoMexRegion_trim")
+PAM.Dir  = paste0(wrkDir, "data\\PAM")
 
 # Input data ####
 ## PAM ####
@@ -217,8 +217,6 @@ for (mm in 1:nrow(mthName)){
   write.csv(out1, file = paste0(wrkDir, "data\\RiskAssessment\\", monthSpeciesT$mth[1], "_AllSpecies_RelDensity.csv"))
   ggsave(paste0(wrkDir, "data\\RiskAssessment\\", monthSpeciesT$mth[1], "_AllSpecies_RelDensity.png"), p2)
   
-  
-  
   # NOISE ACTIVITY ####
   fileIdx = which( sapply(strsplit( gsub(".RData", "", basename( dataNoise ) ) , "_"), tail, 1) == mthName$Sp[mm] )
   load(dataNoise [fileIdx] )
@@ -328,6 +326,7 @@ for (mm in 1:nrow(mthName)){
   write.csv(siteNoiseTm2, file = paste0(wrkDir, "data\\RiskAssessment\\", monthSpeciesT$mth[1], "_AllNoiseRel.csv"))
   ggsave(paste0(wrkDir, "data\\RiskAssessment\\", monthSpeciesT$mth[1], "_AllNoiseRel.png"), p3)
   
+
   #calculate number of types above 10% relative number of vessels
   # collapse to all species
   out2 = as.data.frame( siteNoiseTm2 %>% group_by(Site, keep) %>%

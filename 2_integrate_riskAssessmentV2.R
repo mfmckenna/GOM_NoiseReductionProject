@@ -85,8 +85,8 @@ seismicLocations = st_as_sf(data.frame( latitude = dataSeismicT$Lat, longitude =
 
 # BY MONTH PROCESSING ####
 #set up loop with files to grab based on naming- listening spaces are calculated for each month
-mthLS = c("August","August","August","November","November","November","February","February","February","May","May","May") # for listening range data 
-mthSe= c("July","August","September","October","November","December","January","February","March","April","May","June") # seismic surveys days
+mthLS = c("August","August","August", "November","November","November","February","February","February","May","May","May") # for listening range data 
+mthSe=  c("July","August","September","October","November","December","January","February","March","April","May","June") # seismic surveys days
 yrmthSp = c(202107, 202008,202009,202010,202011,202012,202101,202102,202103,202104,202105,202106)       # for species data
 mthAIS = c("2021-07", "2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06") # for AIS data
 
