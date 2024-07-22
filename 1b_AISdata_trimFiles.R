@@ -32,7 +32,7 @@ sfdf <- st_sfc ((lst), crs = WGS84proj)
 
 # LARGE AIS FILES
 #-----------------------------------------------------
-AIS.dir <- paste0("H:\\AIS_MarineCad\\data\\")
+AIS.dir <- paste0("E:\\AIS_MarineCad\\data\\")
 inFiles = list.files(path = AIS.dir, pattern="AIS_20", recursive=TRUE, full.names = TRUE) 
 out.Dir = paste0(AIS.dir, "GoMexRegion")
 
